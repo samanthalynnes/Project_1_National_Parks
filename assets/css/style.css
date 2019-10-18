@@ -1,0 +1,15 @@
+img {
+  width: 720px;
+  height: 400px;
+}
+.row {
+  height: 600px;
+}
+.col-sm-3,
+img {
+  border-radius: 20px;
+}
+
+.col-sm-8 {
+  border-radius: 20px;
+}
