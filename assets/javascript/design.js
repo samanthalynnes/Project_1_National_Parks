@@ -3,7 +3,7 @@ $(document).ready(function() {
   //   queryURL =
   // "https://developer.nps.gov/api/v1/newsreleases?stateCode=&limit=5&q=parks&api_key=rNNmbbVGYhG0JXXavcAsDZoDUxLVy97nKeTT9pyj";
   api_key = "3cffbd6527cb65b37fddfd66953a8c149200b69d507cfe7340801cfa6a97fa11";
-  queryURL = "https://api.unsplash.com/search/photos?page=1&query=Parks&client_id=" + api_key;
+  queryURL = "https://api.unsplash.com/search/photos?page=1&query=US+rivers&client_id=" + api_key;
   $.ajax({
     type: "GET",
     url: queryURL
@@ -246,16 +246,16 @@ for (var j = 0; j < placeType.length; j++) {
     opt2.text(placeType[j]);
     $("#placeType").append(opt2);
 }
-/*
+
 
 $("#btn").click(function (e) {
     e.preventDefault();
     var stateNameAbbr = $("#states :selected").attr("abbr");
     var stateName = $("#states :selected").val();
-    $("#state_modal").text(stateName);
+    // $("#state_modal").text(stateName);
 
     var selectedPlace = $("#placeType :selected").val();
-    $("#places_modal").text(selectedPlace);
+    // $("#places_modal").text(selectedPlace);
 
     // set api
     var apiKey = "rNNmbbVGYhG0JXXavcAsDZoDUxLVy97nKeTT9pyj";
@@ -266,13 +266,12 @@ $("#btn").click(function (e) {
         url: queryURL,
     }).then(function (response) {
         console.log(response);
-        var responseData = response.data;
-        for (var k = 0; k < responseData.length; k++) {
-            var d = $("<div class='border m-2 text-dark'>");
-            d.text(responseData[k].fullName);
-            $(".modal-body").append(d);
-        }
+        // var responseData = response.data;
+        // for (var k = 0; k < responseData.length; k++) {
+        //     var d = $("<div class='border m-2 text-dark'>");
+        //     d.text(responseData[k].fullName);
+        //     $(".modal-body").append(d);
+        // }
     })
-    $(".modal-body").empty();
+    // $(".modal-body").empty();
 });
-*/
