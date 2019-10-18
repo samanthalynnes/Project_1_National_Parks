@@ -3,13 +3,23 @@ img {
   height: 400px;
 }
 .row {
-  height: 600px;
+  /* height: 600px; */
 }
 .col-sm-3,
 img {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
-.col-sm-8 {
-  border-radius: 20px;
+.col-sm-8, .card, .card-body, .card_content {
+  border-radius: 10px;
+}
+.card_content{
+  display: none;
+}
+#footer{
+  height: 50px;
+}
+.result_description:hover{
+  box-shadow: 0 0 20px #4c99c5;
+  transform: scale(1.01); 
 }

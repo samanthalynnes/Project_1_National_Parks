@@ -278,3 +278,11 @@ $("#btn").click(function (e) {
     // $(".modal-body").empty();
 });
 */
+
+// slide down information click event
+$(".result_description").click(function (e) { 
+  e.preventDefault();
+  console.log("hello");
+  $(".card_content").not($(this).next()).slideUp("slow");
+  $(this).next().slideToggle("slow");
+});
