@@ -246,7 +246,7 @@ for (var j = 0; j < placeType.length; j++) {
     opt2.text(placeType[j]);
     $("#placeType").append(opt2);
 }
-
+/*
 
 $("#btn").click(function (e) {
     e.preventDefault();
@@ -275,3 +275,4 @@ $("#btn").click(function (e) {
     })
     $(".modal-body").empty();
 });
+*/
