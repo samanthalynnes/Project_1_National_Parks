@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // set images on carousel
   //   queryURL =
   // "https://developer.nps.gov/api/v1/newsreleases?stateCode=&limit=5&q=parks&api_key=rNNmbbVGYhG0JXXavcAsDZoDUxLVy97nKeTT9pyj";
@@ -9,7 +9,7 @@ $(document).ready(function() {
   $.ajax({
     type: "GET",
     url: queryURL
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     // var response_data = response.data;
     for (var i = 0; i < 5; i++) {
@@ -279,4 +279,5 @@ $("#btn").click(function (e) {
 });
 */
 
-// slide down information click event
+// slide down box
+
