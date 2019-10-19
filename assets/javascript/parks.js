@@ -56,32 +56,59 @@ $("#btn").on("click", function (event) {
         // var place URL
         var urlLabel = $(`<div><h4>Visit WebPage: </h4></div>`).append(`<p><a href= ${response_url}>${response_url}</a></p>`);
         // appending all the labels
-        sectionDiv.append(designationLabel, descriptionLabel, coordinatesLabel, urlLabel)
+        sectionDiv.append(designationLabel, descriptionLabel, coordinatesLabel, urlLabel, tempLabel)
 
         // appending cards 
         $(".col-sm-8").append(cardName.append(cardBody.append(cardContent)));
         $(".col-sm-8").append(sectionDiv);
 
+        console.log("coordinates" + response_coordinates)
         // adding weather info
-        var lat = response_coordinates.slice(0, response_coordinates.lastIndexOf(","))
-        var splitLat = lat.substring(lat.lastIndexOf(":") + 1, lat.lastIndexOf("."))
+        if (response_coordinates.indexOf("lat") === -1) {
+          console.log(" empty")
 
-        console.log("lat = " + splitLat);
-        var long = response_coordinates.slice(response_coordinates.lastIndexOf(",") + 1)
-        var splitLong = long.substring(long.lastIndexOf(":") + 1, long.lastIndexOf("."))
+        } else {
+          console.log(" not empty")
+          var lat = response_coordinates.slice(0, response_coordinates.lastIndexOf(","))
+          var splitLat = lat.substring(lat.lastIndexOf(":") + 1, lat.lastIndexOf("."))
 
-        console.log("long = " + splitLong);
-        var weatherApiKey = "9f19e6b16e997c7ba8474f24ee4bc33c";
-        var weatherQueryUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + splitLat + "&lon=" + splitLong + "&appid=" + weatherApiKey;
+          console.log("lat = " + splitLat);
+          var long = response_coordinates.slice(response_coordinates.lastIndexOf(",") + 1)
+          var splitLong = long.substring(long.lastIndexOf(":") + 1, long.lastIndexOf("."))
 
-        $.ajax({
-          type: "GET",
-          url: weatherQueryUrl,
+          console.log("long = " + splitLong);
+          var weatherApiKey = "9f19e6b16e997c7ba8474f24ee4bc33c";
+          var weatherQueryUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + splitLat + "&lon=" + splitLong + "&appid=" + weatherApiKey;
 
-        }).then(function (response) {
-          console.log('weather:' + JSON.stringify(response));
-        });
+          $.ajax({
+            type: "GET",
+            url: weatherQueryUrl,
+          })
 
+
+            .then(function (response) {
+
+              console.log("no coordinates available")
+
+              console.log('weather:' + JSON.stringify(response));
+              $(".temp").text("Temperature (K) " + response.main.temp);
+              console.log("Temperature (K): " + response.main.temp);
+              var response_temp = (response.main.temp - 273.15) * 1.8 + 32;
+              console.log("Fahrenheit:" + response_temp.toFixed(0));
+
+              var response_weather_description = (response.description);
+              var response_humidity = (response.main.humidity);
+              var response_wind = (response.wind.speed);
+              var tempLabel = $(`<div><h4>Temperature: </h4></div>`).append(`<p>${response_temp}</p>`);
+
+              var weatherDescriptionLabel = $(`<div><h4>Weather Description: </h4></div>`).append(`<p>${response_weather_description}</p>`);
+
+              var humidityLabel = $(`<div><h4>Humidity: </h4></div>`).append(`<p>${response_humidity}</p>`);
+
+              var windLabel = $(`<div><h4>Wind Speed: </h4></div>`).append(`<p>${response_wind}</p>`);
+
+            });
+        }
       }
 
       // click event for card that show content
