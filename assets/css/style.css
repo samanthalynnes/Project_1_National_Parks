@@ -6,20 +6,32 @@ img {
   /* height: 600px; */
 }
 .col-sm-3,
+.col-sm-12,
 img {
   border-radius: 10px;
 }
 
-.col-sm-8, .card, .card-body, .card_content {
+.col-sm-8,
+.card,
+.card-body,
+.card_content {
   border-radius: 10px;
 }
-.card_content{
+.card_content {
   display: none;
 }
-#footer{
+#footer {
   height: 50px;
 }
-.result_description:hover{
+.result_description:hover {
   box-shadow: 0 0 20px #4c99c5;
-  transform: scale(1.01); 
+  transform: scale(1.01);
+}
+.result_img {
+  width: 200px;
+  height: 150px;
+  border: none;
+}
+.imgDiv {
+  border: none;
 }

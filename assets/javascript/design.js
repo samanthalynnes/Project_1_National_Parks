@@ -1,21 +1,22 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // set images on carousel
   //   queryURL =
   // "https://developer.nps.gov/api/v1/newsreleases?stateCode=&limit=5&q=parks&api_key=rNNmbbVGYhG0JXXavcAsDZoDUxLVy97nKeTT9pyj";
-  api_key = "3cffbd6527cb65b37fddfd66953a8c149200b69d507cfe7340801cfa6a97fa11";
-  queryURL =
-    "https://api.unsplash.com/search/photos?page=1&query=US+rivers&client_id=" +
+  var api_key =
+    "3cffbd6527cb65b37fddfd66953a8c149200b69d507cfe7340801cfa6a97fa11";
+  var queryURL =
+    "https://api.unsplash.com/search/photos?page=1&query=US++natural+Parks&client_id=" +
     api_key;
   $.ajax({
     type: "GET",
     url: queryURL
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
     // var response_data = response.data;
     for (var i = 0; i < 5; i++) {
       var carousel_item_div = $("<div>");
       carousel_item_div.addClass("carousel-item");
-      carousel_item_div.attr("data-interval", 2000);
+      carousel_item_div.attr("data-interval", 3000);
       $(".carousel-item:first-child").addClass("active");
       var carousel_img = $("<img>");
       //   var imgSrc = response_data[i].image.url;
@@ -241,43 +242,10 @@ for (var i = 0; i < states.length; i++) {
   $("#states").append(opt);
 }
 
-var placeType = ["places", "parks"];
+var placeType = ["Places", "Parks"];
 
 for (var j = 0; j < placeType.length; j++) {
   var opt2 = $("<option class= 'typeOfPlace'>");
   opt2.text(placeType[j]);
   $("#placeType").append(opt2);
 }
-
-/*
-$("#btn").click(function (e) {
-    e.preventDefault();
-    var stateNameAbbr = $("#states :selected").attr("abbr");
-    var stateName = $("#states :selected").val();
-    // $("#state_modal").text(stateName);
-
-    var selectedPlace = $("#placeType :selected").val();
-    // $("#places_modal").text(selectedPlace);
-
-    // set api
-    var apiKey = "rNNmbbVGYhG0JXXavcAsDZoDUxLVy97nKeTT9pyj";
-    queryURL = "https://developer.nps.gov/api/v1/" + selectedPlace + "?stateCode=" + stateNameAbbr + "&api_key=" + apiKey;
-
-    $.ajax({
-        type: "GET",
-        url: queryURL,
-    }).then(function (response) {
-        console.log(response);
-        // var responseData = response.data;
-        // for (var k = 0; k < responseData.length; k++) {
-        //     var d = $("<div class='border m-2 text-dark'>");
-        //     d.text(responseData[k].fullName);
-        //     $(".modal-body").append(d);
-        // }
-    })
-    // $(".modal-body").empty();
-});
-*/
-
-// slide down box
-

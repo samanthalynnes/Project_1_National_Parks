@@ -24,7 +24,7 @@
       <h1 class="display-3">Go to Places...</h1>
     </div>
     <!-- adding carousel -->
-    <div id="carouselId" class="carousel slide" data-ride="carousel">
+    <div id="carouselId" class="carousel slide carousel-fade" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselId" data-slide-to="0" class="active"></li>
         <li data-target="#carouselId" data-slide-to="1"></li>
@@ -44,7 +44,8 @@
     </div>
     <!-- pull information from national parks api - UI -->
     <div class="row mt-4 mx-auto">
-      <div class="col-sm-3 ml-4 mr-4 bg-light text-dark p-2">
+      <div class="col-sm-3 ">
+        <div class="col-sm-12 text-light ml-4 mr-4 p-2">
         <!-- drop down sections -->
         <div class="form-group mt-2">
           <label for="states">
@@ -54,7 +55,7 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group d-block">
           <label for="placeType">
             <h5>Select Place Type: </h5>
           </label>
@@ -66,6 +67,7 @@
           Launch
         </button>
       </div>
+    </div>
       <div class="col-sm-8 ml-4 p-2">
       </div>
 
