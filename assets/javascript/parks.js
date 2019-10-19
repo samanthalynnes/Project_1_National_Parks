@@ -142,8 +142,7 @@ $("#btn").on("click", function(event) {
             $.ajax({
               type: "GET",
               url: weatherQueryUrl
-            })
-            .then(function(response) {
+            }).then(function(response) {
               console.log("no coordinates available");
 
               console.log("weather:" + JSON.stringify(response));
