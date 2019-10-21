@@ -1,7 +1,6 @@
 $(document).ready(function() {
+  $("#loading").hide();
   // set images on carousel
-  //   queryURL =
-  // "https://developer.nps.gov/api/v1/newsreleases?stateCode=&limit=5&q=parks&api_key=rNNmbbVGYhG0JXXavcAsDZoDUxLVy97nKeTT9pyj";
   var api_key =
     "3cffbd6527cb65b37fddfd66953a8c149200b69d507cfe7340801cfa6a97fa11";
   var queryURL =
@@ -12,240 +11,144 @@ $(document).ready(function() {
     url: queryURL
   }).then(function(response) {
     console.log(response);
-    // var response_data = response.data;
     for (var i = 0; i < 5; i++) {
       var carousel_item_div = $("<div>");
       carousel_item_div.addClass("carousel-item");
       carousel_item_div.attr("data-interval", 3000);
       $(".carousel-item:first-child").addClass("active");
       var carousel_img = $("<img>");
-      //   var imgSrc = response_data[i].image.url;
       var imgSrc = response.results[i].urls.regular;
       console.log(imgSrc);
       carousel_img.attr("src", imgSrc);
       carousel_img.attr("alt", "slide no " + (i + 1));
       carousel_item_div.append(carousel_img);
       $("#show_img").append(carousel_item_div);
-      //   $("#show_img").append(carousel_img);
     }
   });
 });
 // states and places
-
-var states = [
-  {
-    name: "Alabama",
-    abbreviation: "AL"
-  },
-  {
-    name: "Alaska",
-    abbreviation: "AK"
-  },
-  {
-    name: "Arizona",
-    abbreviation: "AZ"
-  },
-  {
-    name: "Arkansas",
-    abbreviation: "AR"
-  },
-  {
-    name: "California",
-    abbreviation: "CA"
-  },
-  {
-    name: "Colorado",
-    abbreviation: "CO"
-  },
-  {
-    name: "Connecticut",
-    abbreviation: "CT"
-  },
-  {
-    name: "Delaware",
-    abbreviation: "DE"
-  },
-  {
-    name: "Florida",
-    abbreviation: "FL"
-  },
-  {
-    name: "Georgia",
-    abbreviation: "GA"
-  },
-  {
-    name: "Hawaii",
-    abbreviation: "HI"
-  },
-  {
-    name: "Idaho",
-    abbreviation: "ID"
-  },
-  {
-    name: "Illinois",
-    abbreviation: "IL"
-  },
-  {
-    name: "Indiana",
-    abbreviation: "IN"
-  },
-  {
-    name: "Iowa",
-    abbreviation: "IA"
-  },
-  {
-    name: "Kansas",
-    abbreviation: "KS"
-  },
-  {
-    name: "Kentucky",
-    abbreviation: "KY"
-  },
-  {
-    name: "Louisiana",
-    abbreviation: "LA"
-  },
-  {
-    name: "Maine",
-    abbreviation: "ME"
-  },
-  {
-    name: "Maryland",
-    abbreviation: "MD"
-  },
-  {
-    name: "Massachusetts",
-    abbreviation: "MA"
-  },
-  {
-    name: "Michigan",
-    abbreviation: "MI"
-  },
-  {
-    name: "Minnesota",
-    abbreviation: "MN"
-  },
-  {
-    name: "Mississippi",
-    abbreviation: "MS"
-  },
-  {
-    name: "Missouri",
-    abbreviation: "MO"
-  },
-  {
-    name: "Montana",
-    abbreviation: "MT"
-  },
-  {
-    name: "Nebraska",
-    abbreviation: "NE"
-  },
-  {
-    name: "Nevada",
-    abbreviation: "NV"
-  },
-  {
-    name: "New Hampshire",
-    abbreviation: "NH"
-  },
-  {
-    name: "New Jersey",
-    abbreviation: "NJ"
-  },
-  {
-    name: "New Mexico",
-    abbreviation: "NM"
-  },
-  {
-    name: "New York",
-    abbreviation: "NY"
-  },
-  {
-    name: "North Carolina",
-    abbreviation: "NC"
-  },
-  {
-    name: "North Dakota",
-    abbreviation: "ND"
-  },
-  {
-    name: "Ohio",
-    abbreviation: "OH"
-  },
-  {
-    name: "Oklahoma",
-    abbreviation: "OK"
-  },
-  {
-    name: "Oregon",
-    abbreviation: "OR"
-  },
-  {
-    name: "Pennsylvania",
-    abbreviation: "PA"
-  },
-  {
-    name: "Rhode Island",
-    abbreviation: "RI"
-  },
-  {
-    name: "South Carolina",
-    abbreviation: "SC"
-  },
-  {
-    name: "South Dakota",
-    abbreviation: "SD"
-  },
-  {
-    name: "Tennessee",
-    abbreviation: "TN"
-  },
-  {
-    name: "Texas",
-    abbreviation: "TX"
-  },
-  {
-    name: "Utah",
-    abbreviation: "UT"
-  },
-  {
-    name: "Vermont",
-    abbreviation: "VT"
-  },
-  {
-    name: "Virginia",
-    abbreviation: "VA"
-  },
-  {
-    name: "Washington",
-    abbreviation: "WA"
-  },
-  {
-    name: "West Virginia",
-    abbreviation: "WV"
-  },
-  {
-    name: "Wisconsin",
-    abbreviation: "WI"
-  },
-  {
-    name: "Wyoming",
-    abbreviation: "WY"
-  }
-];
-
-for (var i = 0; i < states.length; i++) {
-  var opt = $("<option class= 'stateName'>");
-  opt.html(states[i].name);
-  opt.attr("abbr", states[i].abbreviation);
-  $("#states").append(opt);
-}
-
 var placeType = ["Places", "Parks"];
-
 for (var j = 0; j < placeType.length; j++) {
   var opt2 = $("<option class= 'typeOfPlace'>");
   opt2.text(placeType[j]);
   $("#placeType").append(opt2);
+}
+var stateNamesArr = [
+  "alabama",
+  "alaska",
+  "arizona",
+  "arkansas",
+  "california",
+  "colorado",
+  "connecticut",
+  "delaware",
+  "florida",
+  "georgia",
+  "hawaii",
+  "idaho",
+  "illinois",
+  "indiana",
+  "iowa",
+  "kansas",
+  "kentucky",
+  "louisiana",
+  "maine",
+  "maryland",
+  "massachusetts",
+  "michigan",
+  "minnesota",
+  "mississippi",
+  "missouri",
+  "montana",
+  "nebraska",
+  "nevada",
+  "new hampshire",
+  "new jersey",
+  "new mexico",
+  "new york",
+  "north carolina",
+  "north dakota",
+  "ohio",
+  "oklahoma",
+  "oregon",
+  "pennsylvania",
+  "rhode island",
+  "south carolina",
+  "south dakota",
+  "tennessee",
+  "texas",
+  "utah",
+  "vermont",
+  "virginia",
+  "washington",
+  "west virginia",
+  "wisconsin",
+  "wyoming"
+];
+var stateAbbr = [
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "FL",
+  "GA",
+  "HI",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VT",
+  "VA",
+  "WA",
+  "WV",
+  "WI",
+  "WY"
+];
+// function to get state abbr based on user's state input
+function getAbbr() {
+  var userSelectedStateName = $("#states").val();
+  var correctStateName = stateNamesArr.includes(
+    userSelectedStateName.toLowerCase()
+  );
+  if (userSelectedStateName.length === 0) {
+    $("#status").text("Enter something");
+  } else if (!correctStateName) {
+    $("#status").text("Enter correct state name");
+  }
+  var index = stateNamesArr.indexOf(userSelectedStateName.toLowerCase());
+  var userSelectedStateAbbr = stateAbbr[index];
+  return userSelectedStateAbbr;
 }
