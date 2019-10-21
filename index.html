@@ -1,111 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Go to Places</title>
+    <!-- Bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <!-- jquery link -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- font-awesome link -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <!-- css Link -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Go to Places</title>
-  <!-- Bootstrap link -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <!-- jquery link -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-  <!-- font-awesome link -->
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-  <!-- css Link -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body class="bg-dark">
-  <div class="container-fluid bg-dark text-light">
-    <div class="jumbotron bg-dark m-0 p-0 text-center">
-      <h1 class="display-3">Go to Places...</h1>
-    </div>
-    <!-- adding carousel -->
-    <div id="carouselId" class="carousel slide carousel-fade" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselId" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselId" data-slide-to="1"></li>
-        <li data-target="#carouselId" data-slide-to="2"></li>
-        <li data-target="#carouselId" data-slide-to="3"></li>
-        <li data-target="#carouselId" data-slide-to="4"></li>
-      </ol>
-      <div id="show_img" class="carousel-inner text-center" role="listbox"></div>
-      <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <!-- pull information from national parks api - UI -->
-    <div class="row mt-4 mx-auto">
-      <div class="col-sm-3 ">
-        <div class="col-sm-12 text-light ml-4 mr-4 p-2">
-        <!-- drop down sections -->
-        <div class="form-group mt-2">
-          <label for="states">
-            <h5>Select a State:</h5>
-          </label>
-          <select class="form-control w-50 bg-light" id="states" name="states">
-          </select>
-        </div>
-
-        <div class="form-group d-block">
-          <label for="placeType">
-            <h5>Select Place Type: </h5>
-          </label>
-          <select class="form-control w-50 bg-light" name="placeType" id="placeType">
-          </select>
-        </div>
-        <!-- Button trigger modal -->
-        <button id="btn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-          Launch
-        </button>
+  <body class="bg-dark">
+    <div class="container-fluid bg-dark text-light">
+      <div class="jumbotron bg-dark m-0 p-0 text-center">
+        <h1 class="display-3">Go to Places...</h1>
       </div>
-    </div>
-      <div class="col-sm-8 ml-4 p-2">
+      <!-- adding carousel -->
+      <div
+        id="carouselId"
+        class="carousel slide carousel-fade"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators">
+          <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselId" data-slide-to="1"></li>
+          <li data-target="#carouselId" data-slide-to="2"></li>
+          <li data-target="#carouselId" data-slide-to="3"></li>
+          <li data-target="#carouselId" data-slide-to="4"></li>
+        </ol>
+        <div
+          id="show_img"
+          class="carousel-inner text-center"
+          role="listbox"
+        ></div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselId"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselId"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
+      <!-- pull information from national parks api - UI -->
+      <div class="row mt-4 mx-auto">
+        <div class="col-sm-3 ">
+          <div class="col-sm-12 text-light ml-4 p-2">
+            <!-- drop down sections -->
+            <div class="form-group mt-2">
+              <label for="states">
+                <h5>Select a State:</h5>
+              </label>
+              <input
+                class="form-control w-50 bg-light"
+                id="states"
+                name="states"
+              />
+              <p id="status" class="text-danger"></p>
+            </div>
 
-    </div>
-
-    <!-- modal display setup -->
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-      <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-          <div class="modal-body text-dark">
-            <h3></h3>I want to see <span id="places_modal"></span> in the state of <span id="state_modal"></span>
-            </h3>
+            <div class="form-group d-block">
+              <label for="placeType">
+                <h5>Select Place Type:</h5>
+              </label>
+              <select
+                class="form-control w-50 bg-light"
+                name="placeType"
+                id="placeType"
+              >
+              </select>
+            </div>
+            <button
+              id="btn"
+              type="button"
+              class="btn btn-primary btn-lg fa fa-search"
+            >
+              Search
+            </button>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        <div class="col-sm-8 p-2">
+          <div id="loading" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
           </div>
         </div>
       </div>
+
+      <!-- footer -->
+      <div id="footer">
+        <small>&copy; Samantha, Sagar and Arno</small>
+      </div>
     </div>
-    <!-- footer -->
-    <div id="footer"></div>
-  </div>
 
-  <!-- code ends here! -->
+    <!-- code ends here! -->
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="./assets/javascript/design.js"></script>
-  <script src="./assets/javascript/parks.js"></script>
-</body>
-
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./assets/javascript/design.js"></script>
+    <script src="./assets/javascript/parks.js"></script>
+  </body>
 </html>

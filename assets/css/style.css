@@ -2,9 +2,7 @@ img {
   width: 720px;
   height: 400px;
 }
-.row {
-  /* height: 600px; */
-}
+
 .col-sm-3,
 .col-sm-12,
 img {
@@ -21,7 +19,9 @@ img {
   display: none;
 }
 #footer {
-  height: 50px;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
 }
 .result_description:hover {
   box-shadow: 0 0 20px #4c99c5;
