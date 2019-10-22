@@ -34,3 +34,6 @@ img {
 .imgDiv {
   border: none;
 }
+.unfavoritePlace {
+  display: none;
+}

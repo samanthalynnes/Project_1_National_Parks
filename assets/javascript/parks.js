@@ -35,7 +35,9 @@ $("#btn").on("click", function(event) {
         var response_fullName = response.data[i].title;
         // console.log(response_fullName);
         sectionDiv.attr("name", response_fullName);
-        var cardName = $("<div class='card mb-2 result_description w3-text-khaki'>");
+        var cardName = $(
+          "<div class='card mb-2 result_description w3-text-khaki'>"
+        );
         var cardBody = $("<div class='card-body bg-dark p-1 my-auto'>");
         var cardContent = $(
           "<h4 class=' ml-3 my-auto'>" + response_fullName + "</h4>"
@@ -46,7 +48,7 @@ $("#btn").on("click", function(event) {
         );
         // unfavorite the place
         var unfavorite = $(
-          `<button type="button" class=" unfavoritePlace btn btn-danger float-right mr-2 mt-2 d-none">&#9733; Remove From Favorites </button>`
+          `<button type="button" class=" unfavoritePlace btn btn-danger float-right mr-2 mt-2">Remove From Favorites </button>`
         );
         var response_description = response.data[i].listingdescription;
         // description
@@ -84,7 +86,9 @@ $("#btn").on("click", function(event) {
         var response_fullName = response.data[i].fullName;
         // console.log(response_fullName);
         sectionDiv.attr("name", response_fullName);
-        var cardName = $("<div class='card mb-2 result_description w3-text-khaki'>");
+        var cardName = $(
+          "<div class='card mb-2 result_description w3-text-khaki'>"
+        );
         var cardBody = $("<div class='card-body bg-dark p-1 my-auto'>");
         var cardContent = $(
           "<h4 class=' ml-3 my-auto'>" + response_fullName + "</h4>"
@@ -95,7 +99,7 @@ $("#btn").on("click", function(event) {
         );
         // unfavorite the place
         var unfavorite = $(
-          `<button type="button" class=" unfavoritePlace btn btn-danger float-right mr-2 mt-2 d-none">&#9733; Remove From Favorites </button>`
+          `<button type="button" class=" unfavoritePlace btn btn-danger float-right mr-2 mt-2">Remove From Favorites </button>`
         );
         // designation
         var response_designation = response.data[i].designation;
@@ -164,7 +168,7 @@ $("#btn").on("click", function(event) {
           $(this)
             .next()
             .find(".unfavoritePlace")
-            .removeClass("d-none");
+            .show();
         }
       }
 
