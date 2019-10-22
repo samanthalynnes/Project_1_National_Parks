@@ -33,12 +33,20 @@ $("#btn").on("click", function(event) {
         var sectionDiv = $("<div class='card_content'>");
         // designation
         var response_fullName = response.data[i].title;
-        console.log(response_fullName);
-
-        var cardName = $("<div class='card mb-2 result_description'>");
+        // console.log(response_fullName);
+        sectionDiv.attr("name", response_fullName);
+        var cardName = $("<div class='card mb-2 result_description w3-text-khaki'>");
         var cardBody = $("<div class='card-body bg-dark p-1 my-auto'>");
         var cardContent = $(
           "<h4 class=' ml-3 my-auto'>" + response_fullName + "</h4>"
+        );
+        // favorite Button
+        var favoriteBtn = $(
+          `<button type="button" class=" favoritePlace btn btn-info float-right mr-2 mt-2">&#9733; Add to Favorite </button>`
+        );
+        // unfavorite the place
+        var unfavorite = $(
+          `<button type="button" class=" unfavoritePlace btn btn-danger float-right mr-2 mt-2 d-none">&#9733; Remove From Favorites </button>`
         );
         var response_description = response.data[i].listingdescription;
         // description
@@ -63,17 +71,31 @@ $("#btn").on("click", function(event) {
         );
 
         // appending all the labels
-        sectionDiv.append(descriptionLabel, imgLabel, urlLabel);
+        sectionDiv.append(
+          favoriteBtn,
+          unfavorite,
+          descriptionLabel,
+          imgLabel,
+          urlLabel
+        );
       } else {
         var sectionDiv = $("<div class='card_content'>");
         // designation
         var response_fullName = response.data[i].fullName;
-        console.log(response_fullName);
-
-        var cardName = $("<div class='card mb-2 result_description'>");
+        // console.log(response_fullName);
+        sectionDiv.attr("name", response_fullName);
+        var cardName = $("<div class='card mb-2 result_description w3-text-khaki'>");
         var cardBody = $("<div class='card-body bg-dark p-1 my-auto'>");
         var cardContent = $(
           "<h4 class=' ml-3 my-auto'>" + response_fullName + "</h4>"
+        );
+        // favorites button
+        var favoriteBtn = $(
+          `<button type="button" class=" favoritePlace btn btn-info float-right mr-2 mt-2">&#9733; Add to Favorite </button>`
+        );
+        // unfavorite the place
+        var unfavorite = $(
+          `<button type="button" class=" unfavoritePlace btn btn-danger float-right mr-2 mt-2 d-none">&#9733; Remove From Favorites </button>`
         );
         // designation
         var response_designation = response.data[i].designation;
@@ -97,9 +119,17 @@ $("#btn").on("click", function(event) {
           `<p><a href= ${response_url} target="_blank">${response_url}</a></p>`
         );
         if (response_coordinates.indexOf("lat") === -1) {
-          sectionDiv.append(designationLabel, descriptionLabel, urlLabel);
+          sectionDiv.append(
+            favoriteBtn,
+            unfavorite,
+            designationLabel,
+            descriptionLabel,
+            urlLabel
+          );
         } else {
           sectionDiv.append(
+            favoriteBtn,
+            unfavorite,
             designationLabel,
             descriptionLabel,
             coordinatesLabel,
@@ -111,8 +141,33 @@ $("#btn").on("click", function(event) {
       $(".col-sm-8").append(cardName.append(cardBody.append(cardContent)));
       $(".col-sm-8").append(sectionDiv);
     }
+    var alreadyAddedToFavorite = [];
     // click event for card that shows content
     $(".result_description").click(function(e) {
+      // console.log("I clicked : " + $(this).text());
+      alreadyAddedToFavorite = [];
+      alreadyAddedToFavorite = JSON.parse(
+        localStorage.getItem("totalFavorites")
+      );
+      // console.log(
+      //   "Already Added:::::::: " +
+      //     JSON.parse(localStorage.getItem("totalFavorites"))
+      // );
+      if (alreadyAddedToFavorite === null) {
+      } else {
+        if (!alreadyAddedToFavorite.includes($(this).text())) {
+        } else {
+          $(this)
+            .next()
+            .find(".favoritePlace")
+            .hide();
+          $(this)
+            .next()
+            .find(".unfavoritePlace")
+            .removeClass("d-none");
+        }
+      }
+
       e.preventDefault();
       $(".card_content")
         .not($(this).next())
@@ -127,6 +182,8 @@ $("#btn").on("click", function(event) {
       getWeather(location);
       $(".temp:last-child").remove();
     });
+    // add to favorite function call
+    addPlaceToFavorite();
   });
 });
 function getWeather(coordinates) {
