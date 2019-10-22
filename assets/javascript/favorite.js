@@ -2,8 +2,9 @@ function addFavArr() {
   var addToFavoriteArr = [];
   return addToFavoriteArr;
 }
+var addToFavorite;
 function addPlaceToFavorite() {
-  var addToFavorite = addFavArr();
+  addToFavorite = addFavArr();
 
   $(".favoritePlace").click(function(e) {
     // localStorage.clear();
@@ -61,26 +62,31 @@ $("#favoriteSection").click(function(e) {
   $("#displayFavoriteHere").empty();
   var storedFavs = JSON.parse(localStorage.getItem("totalFavorites"));
   console.log("stored favs to show: " + storedFavs);
-  for (var i = 0; i < storedFavs.length; i++) {
-    var showFavs = $(
-      `<div class = "myFavs w3-card my-2 pl-2 w3-lime"><h3>${storedFavs[i]}</h3></div>`
-    );
-    showFavs.addClass(storedFavs[i]);
-    $("#displayFavoriteHere").append(showFavs);
-    showFavs.attr("favoriteName", storedFavs[i]);
-  }
-  $("#clearAll").click(function(e) {
-    e.preventDefault();
+  if (storedFavs === null) {
+  } else {
+    for (var i = 0; i < storedFavs.length; i++) {
+      var showFavs = $(
+        `<div class = "myFavs w3-card my-2 pl-2 w3-lime"><h3>${storedFavs[i]}</h3></div>`
+      );
+      showFavs.addClass(storedFavs[i]);
+      $("#displayFavoriteHere").append(showFavs);
+      showFavs.attr("favoriteName", storedFavs[i]);
+    }
+    $("#clearAll").click(function(e) {
+      e.preventDefault();
 
-    $("#displayFavoriteHere").empty();
-    localStorage.clear();
-    $(".result_description")
-      .next()
-      .find(".unfavoritePlace")
-      .hide();
-    $(".result_description")
-      .next()
-      .find(".favoritePlace")
-      .show();
-  });
+      $("#displayFavoriteHere").empty();
+      localStorage.clear();
+      addToFavorite =[];
+      console.log("Array now has: " + addFavArr());
+      $(".result_description")
+        .next()
+        .find(".unfavoritePlace")
+        .hide();
+      $(".result_description")
+        .next()
+        .find(".favoritePlace")
+        .show();
+    });
+  }
 });
