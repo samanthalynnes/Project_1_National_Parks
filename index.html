@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Go to Places</title>
+    <title>National Parks</title>
+    <!-- w3 css -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <!-- Bootstrap link -->
     <link
       rel="stylesheet"
@@ -29,8 +31,16 @@
 
   <body class="bg-dark">
     <div class="container-fluid bg-dark text-light">
+      <button
+        id="favoriteSection"
+        type="button"
+        class="btn btn-warning float-right text-dark mt-2 ml-2"
+        onclick="document.getElementById('id01').style.display='block'"
+      >
+        <h4>&#9733; Favorites</h4>
+      </button>
       <div class="jumbotron bg-dark m-0 p-0 text-center">
-        <h1 class="display-3">Go to Places...</h1>
+        <h1 class="display-3">National Parks</h1>
       </div>
       <!-- adding carousel -->
       <div
@@ -70,13 +80,15 @@
         </a>
       </div>
       <!-- pull information from national parks api - UI -->
+
       <div class="row mt-4 mx-auto">
-        <div class="col-sm-3 ">
-          <div class="col-sm-12 text-light ml-4 p-2">
-            <!-- drop down sections -->
+        <div class="col-sm-2 mr-4 ">
+          <!-- drop down sections -->
+          <div class="col-sm-12 border">
             <div class="form-group mt-2">
+              <h4 class="w3-text-deep-orange">Search for Park or Place</h4>
               <label for="states">
-                <h5>Select a State:</h5>
+                <h5>Enter a State:</h5>
               </label>
               <input
                 class="form-control w-50 bg-light"
@@ -100,17 +112,13 @@
             <button
               id="btn"
               type="button"
-              class="btn btn-primary btn-lg fa fa-search"
+              class="btn btn-primary mb-2 btn-lg fa fa-search"
             >
               Search
             </button>
           </div>
         </div>
-        <div class="col-sm-8 p-2">
-          <div id="loading" class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
+        <div class="col-sm-8 ml-4 p-2"></div>
       </div>
 
       <!-- footer -->
@@ -118,7 +126,25 @@
         <small>&copy; Samantha, Sagar and Arno</small>
       </div>
     </div>
-
+    <!-- w3 modal -->
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top w3-card-4">
+        <header class="w3-container w3-orange w3-center w3-text-dark-gray">
+          <span
+            onclick="document.getElementById('id01').style.display='none'"
+            class="w3-button w3-display-topright"
+            >&times;</span
+          >
+          <h2>Your favorite Places</h2>
+        </header>
+        <div id="displayFavoriteHere" class="w3-container"></div>
+        <footer id="modalFooter">
+          <button id="clearAll" class="btn btn-danger m-4">
+            <h4>Clear All</h4>
+          </button>
+        </footer>
+      </div>
+    </div>
     <!-- code ends here! -->
 
     <!-- jQuery library -->
@@ -130,5 +156,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="./assets/javascript/design.js"></script>
     <script src="./assets/javascript/parks.js"></script>
+    <script src="./assets/javascript/favorite.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@ img {
   height: 400px;
 }
 
-.col-sm-3,
+.col-sm-2,
 .col-sm-12,
 img {
   border-radius: 10px;
@@ -19,9 +19,8 @@ img {
   display: none;
 }
 #footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  z-index: 1;
 }
 .result_description:hover {
   box-shadow: 0 0 20px #4c99c5;
