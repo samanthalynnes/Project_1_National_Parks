@@ -1,4 +1,6 @@
+var addToFavorite = [];
 $("#btn").on("click", function(event) {
+  console.log("favorites on search click: " + addToFavorite);
   $("#status").text("");
   $("#loading")
     .show(1)
