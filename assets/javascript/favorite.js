@@ -2,10 +2,9 @@ function addFavArr() {
   var addToFavoriteArr = [];
   return addToFavoriteArr;
 }
-var addToFavorite;
-function addPlaceToFavorite() {
-  addToFavorite = addFavArr();
 
+function addPlaceToFavorite() {
+  // addToFavorite = addFavArr();
   $(".favoritePlace").click(function(e) {
     // localStorage.clear();
     $(this).hide();
@@ -50,10 +49,7 @@ function addPlaceToFavorite() {
     localStorage.setItem("totalFavorites", JSON.stringify(addToFavorite));
     var storedFavs = JSON.parse(localStorage.getItem("totalFavorites"));
     console.log("Remaining Favs are:  " + storedFavs);
-    // $("#displayFavoriteHere")
-    //   .find(`.${selectedPlace}`)
-    //   .remove();
-    // e.preventDefault();
+    e.preventDefault();
   });
 }
 
@@ -61,7 +57,6 @@ $("#favoriteSection").click(function(e) {
   e.preventDefault();
   $("#displayFavoriteHere").empty();
   var storedFavs = JSON.parse(localStorage.getItem("totalFavorites"));
-  console.log("stored favs to show: " + storedFavs);
   if (storedFavs === null) {
   } else {
     for (var i = 0; i < storedFavs.length; i++) {
@@ -77,7 +72,7 @@ $("#favoriteSection").click(function(e) {
 
       $("#displayFavoriteHere").empty();
       localStorage.clear();
-      addToFavorite =[];
+      addToFavorite = [];
       console.log("Array now has: " + addFavArr());
       $(".result_description")
         .next()
