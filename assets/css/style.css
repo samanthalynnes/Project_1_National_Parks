@@ -24,7 +24,7 @@ img {
 #footer {
   position: fixed;
   bottom: 0;
-  right:0;
+  right: 10px;
 }
 .result_description:hover {
   box-shadow: 0 0 20px #4c99c5;
