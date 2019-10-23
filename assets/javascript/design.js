@@ -144,9 +144,9 @@ function getAbbr() {
     userSelectedStateName.toLowerCase()
   );
   if (userSelectedStateName.length === 0) {
-    $("#status").text("Enter something");
+    $("#status").text("Enter the state name, Ex: Kansas");
   } else if (!correctStateName) {
-    $("#status").text("Enter correct state name");
+    $("#status").text("Enter correct state name, Ex: Kansas");
   }
   var index = stateNamesArr.indexOf(userSelectedStateName.toLowerCase());
   var userSelectedStateAbbr = stateAbbr[index];
