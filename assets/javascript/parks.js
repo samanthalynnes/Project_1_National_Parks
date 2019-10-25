@@ -71,7 +71,7 @@ $("#btn").on("click", function(event) {
         // var place URL
         var response_url = response.data[i].url;
         var urlLabel = $(`<div><h4>Visit WebPage: </h4></div>`).append(
-          `<p><a href= ${response_url}>${response_url}</a></p>`
+          `<p><a href= ${response_url} target="_blank">${response_url}</a></p>`
         );
 
         // appending all the labels
